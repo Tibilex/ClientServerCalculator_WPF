@@ -60,8 +60,8 @@
                                 </Grid.RowDefinitions>
                                 <Button Grid.Column="0" Grid.Row="0" x:Name="SumButton" Style="{StaticResource OperationBtn}" Content="＋" Click="SumButton_Click"/>
                                 <Button Grid.Column="1" Grid.Row="0" x:Name="SubtractButton" Style="{StaticResource OperationBtn}" Content="－" Click="SubtractButton_Click"/>
-                                <Button Grid.Column="2" Grid.Row="0" x:Name="DevideButton" Style="{StaticResource OperationBtn}" Content="×" Click="DevideButton_Click"/>
-                                <Button Grid.Column="3" Grid.Row="0" x:Name="MultiplyButton" Style="{StaticResource OperationBtn}" Content="÷" Click="MultiplyButton_Click"/>
+                                <Button Grid.Column="2" Grid.Row="0" x:Name="MultiplyButton" Style="{StaticResource OperationBtn}" Content="×" Click="MultiplyButton_Click"/>
+                                <Button Grid.Column="3" Grid.Row="0" x:Name="DevideButton" Style="{StaticResource OperationBtn}" Content="÷" Click="DevideButton_Click"/>
                                 <Button Grid.Column="4" Grid.RowSpan="2" x:Name="ResultButton" Style="{StaticResource ResultBtn}" Content="＝" Click="ResultButton_Click"/>
                             </Grid>
                         </Border>
