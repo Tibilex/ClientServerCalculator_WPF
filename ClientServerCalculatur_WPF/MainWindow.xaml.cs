@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,14 +16,14 @@ namespace ClientServerCalculatur_WPF
         private const int PORT = 8081;
         private const string IP = "127.0.0.1";
         IPEndPoint iPEnd = new IPEndPoint(IPAddress.Parse(IP), PORT);
-        private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        //private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
 
         public MainWindow()
         {
             InitializeComponent();
             s_window = this;
-            clientSocket.Connect(iPEnd);
+            //clientSocket.Connect(iPEnd);
             //this.Loaded += MainWindow_Loaded;
         }
 
@@ -82,13 +83,11 @@ namespace ClientServerCalculatur_WPF
         #region --- Methods ---
         private void ConnectionToServer()
         {
-        
             string message = DisplayOutput.Text;
             var data = Encoding.UTF8.GetBytes(message);
-
-            //clientSocket.Connect(iPEnd);
+            Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            clientSocket.Connect(iPEnd);
             clientSocket.Send(data);
-
             byte[] buffer = new byte[256];
             int dataSize = 0;
             StringBuilder answerString = new StringBuilder();
@@ -102,10 +101,10 @@ namespace ClientServerCalculatur_WPF
             while (clientSocket.Available > 0);
 
             ServerTerminalText.Text = $"{answerString.ToString()}\n";
-            //clientSocket.Shutdown(SocketShutdown.Both);
-            //clientSocket.Close();
-            
-}
+            clientSocket.Shutdown(SocketShutdown.Both);
+            clientSocket.Close();
+
+        }
         #endregion
     }
 }

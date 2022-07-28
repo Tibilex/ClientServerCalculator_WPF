@@ -77,8 +77,8 @@ namespace Server
 
                 Console.WriteLine(dataString.ToString());
                 listner.Send(Encoding.UTF8.GetBytes("Ok!"));
-                //listner.Shutdown(SocketShutdown.Both);
-                //listner.Close();
+                listner.Shutdown(SocketShutdown.Both);
+                listner.Close();
             }
         }
 
